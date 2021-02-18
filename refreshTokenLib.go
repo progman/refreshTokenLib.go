@@ -287,17 +287,16 @@ func (p *RefreshTokenLib) encrypt(source []byte, password []byte) (target []byte
 
 
 // get prehash
-
+/*
 	h := sha256.New()
 	h.Write(password)
 	prehash := h.Sum(nil)
-
-//	prehash := sha256.Sum256(password)
+*/
+	prehash := sha256.Sum256(password)
 
 
 // get prekey
-	prekey := pbkdf2.Key(prehash, salt, PBKDF2_ITERATIONS, KEY_BYTE_SIZE, sha256.New)
-//	prekey := pbkdf2.Key([]byte(prehash[:]), salt, PBKDF2_ITERATIONS, KEY_BYTE_SIZE, sha256.New)
+	prekey := pbkdf2.Key([]byte(prehash[:]), salt, PBKDF2_ITERATIONS, KEY_BYTE_SIZE, sha256.New)
 
 
 // get akey
