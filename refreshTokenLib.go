@@ -475,6 +475,9 @@ func (p *RefreshTokenLib) Decode(pRefreshTokenBody *RefreshTokenBody, token []by
 				if err != nil {
 					return
 				}
+				if pRefreshTokenBody.Scopes == nil {
+					pRefreshTokenBody.Scopes = []string{}
+				}
 			}
 
 			case "user_id": {
