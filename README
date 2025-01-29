@@ -1,1 +1,6 @@
 Lib who manage a refresh token for oauth2 service with algorithm like https://github.com/defuse/php-encryption
+
+
+Use this for make private.key and public.key:
+$ openssl genrsa -out private.key 4096
+$ openssl rsa -in private.key -pubout -out public.key
