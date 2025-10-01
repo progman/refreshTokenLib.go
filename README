@@ -2,5 +2,8 @@ Lib who manage a refresh token for oauth2 service with algorithm like https://gi
 
 
 Use this for make private.key and public.key:
-$ openssl genrsa -out private.key 4096
-$ openssl rsa -in private.key -pubout -out public.key
+$ echo "base64:$(cat /dev/random | head -c 32 | base64)" > password.cfg
+$ ssh-keygen -t rsa -b 4096 -m PEM -f private.pem; # openssl genrsa -out private.key 4096;
+$ mv private.pem private.key;
+$ rm private.pem.pub;
+$ openssl rsa -in private.key -pubout -out public.key;
